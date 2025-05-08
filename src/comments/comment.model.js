@@ -1,25 +1,21 @@
 import {Schema, model} from "mongoose";
 
-const PublicationSchema = Schema({
+const CommentsSchema = Schema({
 
-    title: {
-        type: String,
+    publicationC: {
+        type: Schema.Types.ObjectId,
+        ref: 'Publication',
         required: true
-    },
-    maintext: {
+    },  
+    comment: {
         type: String,
-        required: true
+        required: true,
     },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Comment',
-        required: false
-    }],
     status: {
         type: Boolean,
         default: true,
@@ -31,4 +27,4 @@ const PublicationSchema = Schema({
     }
 );
 
-export default model('Publication', PublicationSchema)
+export default model('Comment', CommentsSchema)

@@ -1,19 +1,21 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { validarCampos } from '../middlewares/validar-campos.js';
-import { savePublication, getPublication, deletePublication, updatePublication } from './publication.controller.js';
+import { saveComment, getComment, deleteComment, updateComment } from './comment.controller.js';
 
 const router = Router();
 
 router.post(
     "/",
     [
+        check('email', 'This is not a valid email').not().isEmpty(),
         validarCampos
     ],
-    savePublication
+    saveComment
 );
 
-router.get("/", getPublication);
+router.get("/", getComment);
+
 
 router.delete(
     "/:id",
@@ -21,8 +23,9 @@ router.delete(
         check("id", "It is not a valid id").isMongoId(),
         validarCampos  
     ],
-    deletePublication
+    deleteComment
 );
+
 
 router.put(
     "/:id",
@@ -30,7 +33,8 @@ router.put(
         check("id", "It is not a valid id").isMongoId(),
         validarCampos 
     ],
-    updatePublication
+    updateComment
 );
+
     
 export default router;
