@@ -21,8 +21,8 @@ const middlewares = (app) => {
 
 const routes = (app) => {
     app.use("/blogAprendizaje/v1/users", userRoutes);
-    app.use("/blogAprendizaje/v1/publication", publicationRoutes);
-    app.use("/blogAprendizaje/v1/comment", commentRoutes);
+    app.use("/blogAprendizaje/v1/publications", publicationRoutes);
+    app.use("/blogAprendizaje/v1/comments", commentRoutes);
 }
 
 const conectarDB = async () => {
