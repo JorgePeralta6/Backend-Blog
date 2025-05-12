@@ -8,7 +8,6 @@ const router = Router();
 router.post(
     "/",
     [
-        check('email', 'This is not a valid email').not().isEmpty(),
         validarCampos
     ],
     saveComment

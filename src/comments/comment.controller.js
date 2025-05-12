@@ -1,18 +1,16 @@
 import { response } from "express";
-import User from '../user/user.model.js';
 import Publication from '../publications/publication.model.js';
 import Comment from './comment.model.js'
 
 export const saveComment = async (req, res) =>{
     try {
         const data = req.body;
-        const publication = await Publication.findOne({title: data.title})
-        const user = await User.findOne({email: data.email});
+        const publication = await Publication.findById(data.publicationId)
         const comment = await Comment.create({
             publicationC: publication._id,
             comment: data.comment,
-            author: user._id
         })
+        
  
         await Publication.findByIdAndUpdate(publication._id, {
             $push: { comments: comment._id}
@@ -42,7 +40,6 @@ export const getComment = async (req, res) => {
 
         const comment = await Comment.find(query)
             .populate({path: 'publicationC', match: { status: true }, select: 'title' })
-            .populate({path: 'author', match: { status: true }, select: 'name' })
             .skip(Number(desde))
             .limit(Number(limite));
 
@@ -96,7 +93,7 @@ export const deleteComment = async (req, res) => {
 export const updateComment = async (req, res  = response) => {
     try {
         const {id} = req.params;
-        const {_id, email, title, ...data} = req.body;
+        const {_id, title, ...data} = req.body;
         const comment1 = await Comment.findById(id);
 
         if (!comment1) {

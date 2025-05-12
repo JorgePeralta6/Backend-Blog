@@ -12,9 +12,8 @@ const CommentsSchema = Schema({
         required: true,
     },
     author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+        type: String,
+        default: "anonymous"
     },
     status: {
         type: Boolean,

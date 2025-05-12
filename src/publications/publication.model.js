@@ -11,9 +11,8 @@ const PublicationSchema = Schema({
         required: true
     },
     author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+        type: String,
+        default: "Peralta"
     },
     comments: [{
         type: Schema.Types.ObjectId,

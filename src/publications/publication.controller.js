@@ -1,5 +1,4 @@
 import { response } from "express";
-import User from '../user/user.model.js';
 import Publication from './publication.model.js';
 import Comment from '../comments/comment.model.js'
 
@@ -8,19 +7,8 @@ export const savePublication = async (req, res) => {
         
         const data = req.body;
 
-        const user = await User.findOne({email: data.email});   
-
-        if(!user){
-            return res.status(404).json({
-                succes: false,
-                message: 'Usuario no encontrado',
-                error: error.message
-            })
-        }
-
         const publication = new Publication({
             ...data,
-            author: user._id,
         });
 
         await publication.save();
@@ -48,8 +36,7 @@ export const getPublication = async (req, res) => {
         const [total, publication] = await Promise.all([
             Publication.countDocuments(query),
             Publication.find(query)
-            .populate({ path: 'author', match: { status: true }, select: 'name' })
-            .populate({ path: 'comments', match: { status: true }, select: 'comment' })
+            .populate({ path: 'comments', match: { status: true }, select: 'comment author' })
             .skip(Number(desde))
             .limit(Number(limite))
         ])
@@ -102,19 +89,8 @@ export const deletePublication = async (req, res) => {
 export const updatePublication = async (req, res) => {
     try {
         const { id } = req.params;
-        const { _id, email, ...data } = req.body;
+        const { _id, ...data } = req.body;
 
-        // Si se envía un nuevo correo, buscamos el usuario y actualizamos el autor
-        if (email) {
-            const user = await User.findOne({ email });
-            if (!user) {
-                return res.status(404).json({
-                    succes: false,
-                    message: 'Usuario con ese correo no encontrado'
-                });
-            }
-            data.author = user._id;
-        }
 
         const publication = await Publication.findByIdAndUpdate(id, data, { new: true });
 
