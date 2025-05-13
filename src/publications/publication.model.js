@@ -14,6 +14,10 @@ const PublicationSchema = Schema({
         type: String,
         default: "Peralta"
     },
+    course: {
+        type: String,
+        enum: [ "Taller", "Tecnologia", "PracticaSupervisadas"]
+    },
     comments: [{
         type: Schema.Types.ObjectId,
         ref: 'Comment',
