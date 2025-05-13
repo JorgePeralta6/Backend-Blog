@@ -2,34 +2,44 @@ import { response } from "express";
 import Publication from '../publications/publication.model.js';
 import Comment from './comment.model.js'
 
-export const saveComment = async (req, res) =>{
+export const saveComment = async (req, res) => {
     try {
         const data = req.body;
-        const publication = await Publication.findById(data.publicationId)
+        const publication = await Publication.findById(data.publicationId);
+
+        if (!publication) {
+            return res.status(404).json({
+                success: false,
+                msg: 'Publication not found'
+            });
+        }
+
         const comment = await Comment.create({
             publicationC: publication._id,
             comment: data.comment,
-        })
-        
- 
+            author: data.author 
+        });
+
         await Publication.findByIdAndUpdate(publication._id, {
-            $push: { comments: comment._id}
-        })
- 
+            $push: { comments: comment._id }
+        });
+
         return res.status(200).json({
             msg: 'Comment registered successfully!',
-            commentDetails:{
-                comment: comment.text
+            commentDetails: {
+                comment: comment.comment, 
+                author: comment.author
             }
-        })
+        });
     } catch (error) {
+        console.error(error);
         res.status(500).json({
             success: false,
-            msg:'Error to create the comment',
+            msg: 'Error to create the comment',
             error: error.message
-        })
+        });
     }
-}
+};
 
 export const getComment = async (req, res) => {
     const {limite = 10, desde = 0} = req.query;
