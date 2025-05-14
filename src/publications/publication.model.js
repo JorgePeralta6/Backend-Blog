@@ -25,7 +25,7 @@ const PublicationSchema = Schema({
     }],
     image:{
         type: String,
-        required: true
+        required: false
     },
     status: {
         type: Boolean,
