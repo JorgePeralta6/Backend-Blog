@@ -23,6 +23,10 @@ const PublicationSchema = Schema({
         ref: 'Comment',
         required: false
     }],
+    image:{
+        type: String,
+        required: true
+    },
     status: {
         type: Boolean,
         default: true,
