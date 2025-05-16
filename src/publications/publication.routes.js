@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { validarCampos } from '../middlewares/validar-campos.js';
-import { savePublication, getPublication, deletePublication, updatePublication } from './publication.controller.js';
+import { savePublication, getPublication, deletePublication, updatePublication, getByCourse } from './publication.controller.js';
 
 const router = Router();
 
@@ -32,5 +32,7 @@ router.put(
     ],
     updatePublication
 );
+
+router.get("/curso", getByCourse);
     
 export default router;
