@@ -35,7 +35,7 @@ export const getPublication = async (req, res) => {
         const [total, publication] = await Promise.all([
             Publication.countDocuments(query),
             Publication.find(query)
-                .populate({ path: 'comments', match: { status: true }, select: 'comment author' })
+                .populate({ path: 'comments', match: { status: true }, select: 'comment author createdAt' })
                 .skip(Number(desde))
                 .limit(Number(limite))
         ])
