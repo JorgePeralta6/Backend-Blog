@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "7af602e1-e5c2-46af-9944-60159671d6e7",
+		"name": "BlogAprendizaje",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413959"
+	},
+	"item": [
+		{
+			"name": "Publication",
+			"item": [
+				{
+					"name": "Post-Publication",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Propuesta de examen\",\r\n    \"maintext\": \"Tarea hecha en grupo para dar nuestra propuesta para el examen final\",\r\n    \"course\": \"Tecnologia\",\r\n    \"image\": \"https://kinal.academy/pluginfile.php/1144/course/overviewfiles/Tecnolog%C3%ADa%20III%20IN6CV.gif\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/publications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"publications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Publication",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/publications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"publications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Publication",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"HackerRank\",\r\n    \"maintext\": \"Tarea hecha en una pagina llamada hackerRank\",\r\n    \"course\": \"Taller\",\r\n    \"image\": \"https://kinal.academy/pluginfile.php/1145/course/overviewfiles/Taller%20III%20IN6CV.gif\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/publications/682428192604e927911191d2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"publications",
+								"682428192604e927911191d2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Publication",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/publications/682421152604e92791119158",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"publications",
+								"682421152604e92791119158"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Curso",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/publications/curso?course=PracticaSupervisadas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"publications",
+								"curso"
+							],
+							"query": [
+								{
+									"key": "course",
+									"value": "PracticaSupervisadas"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Post-Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Venta de Juegos\",\r\n    \"comment\": \"Precio del smash?\",\r\n    \"author\": \"Santiago\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Venta de Juegos\",\r\n    \"comment\": \"Precio del mario oddisey?\",\r\n    \"email\": \"amartinez@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/comment/681c35d83ec50109999b7bc3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"comment",
+								"681c35d83ec50109999b7bc3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/blogAprendizaje/v1/comments/6822a7708336b1d1c6019fae",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogAprendizaje",
+								"v1",
+								"comments",
+								"6822a7708336b1d1c6019fae"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
