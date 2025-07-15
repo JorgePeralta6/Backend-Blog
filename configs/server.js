@@ -12,7 +12,9 @@ import commentRoutes from '../src/comments/comment.routes.js'
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
     app.use(cors({
-        origin: '*'
+        origin: 'https://fronted-blog-pi.vercel.app',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true
     }));
     app.use(express.json());
     app.use(helmet());
