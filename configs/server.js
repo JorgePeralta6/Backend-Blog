@@ -11,7 +11,9 @@ import commentRoutes from '../src/comments/comment.routes.js'
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
-    app.use(cors());
+    app.use(cors({
+        origin: '*'
+    }));
     app.use(express.json());
     app.use(helmet());
     app.use(morgan('dev'));
